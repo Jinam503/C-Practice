@@ -2,8 +2,10 @@
 #include <stdio.h>
 
 void Print(int line){
-    printf("\nChristmas Tree!\n");
     
+    printf("\nChristmas Tree!\n");
+    for(int k = 0; k < (line - 1) * 2 ; k++) printf(" ");
+    printf("☆\n");
     int cnt = 1;
     for(int i = 1; i <= line; i++){
         for(int j = 1; j <= i; j++){
@@ -21,8 +23,8 @@ void Print(int line){
         for(int k = 0; k < (line - 1) * 2 - 2; k++) printf(" ");
         printf("|   |\n");
     }
-    for(int k = 0; k < (line - 1) * 2 - 2; k++) printf(" ");
-    printf("-----\n");
+    for(int k = 0; k < (line - 1) * 2 - 6; k++) printf(" ");
+    printf("⊠⊠ _____ ⊠\n");
 }
 
 int main() {
