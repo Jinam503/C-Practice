@@ -5,15 +5,15 @@
 #include <iostream>
 
 using namespace std;
-typedef struct ChristmasTree{
-	struct ChristmasTree  *left, *right;
+typedef struct ChristmasTree {
+	struct ChristmasTree* left, * right;
 	int data;
 	int light = 0;
 	char letter[1000] = {};
 };
 
-void Print(int line, ChristmasTree* root); 
-ChristmasTree* CreateTree(int line); 
+void Print(int line, ChristmasTree* root);
+ChristmasTree* CreateTree(int line);
 ChristmasTree* MakeNode(int data);
 ChristmasTree* Find(ChristmasTree* root, int data);
 int line, count;
@@ -25,36 +25,40 @@ int main() {
 	while (1) {
 		system("cls");
 		Print(line, root);
-		printf("ëŸ¬ë¸Œë ˆí„°ë¥¼ ì ê³ ì‹¶ì€ ê³³ì´ë‚˜ ìˆ˜ì •í•˜ê³  ì‹¶ì€ ê³³ì˜ ìˆ«ìžë¥¼ ì ì–´ì£¼ì„¸ìš”!\n");
+		printf("·¯ºê·¹ÅÍ¸¦ Àû°í½ÍÀº °÷ÀÌ³ª ¼öÁ¤ÇÏ°í ½ÍÀº °÷ÀÇ ¼ýÀÚ¸¦ Àû¾îÁÖ¼¼¿ä!\n");
 		scanf_s("%d", &room);
 		ChristmasTree* cN = Find(root, room);
 		if (cN->light == 1) {
-			cout << "ë‚´ìš©ì´ ìžˆìŠµë‹ˆë‹¤! ìˆ˜ì •í•˜ê³  ì‹¶ìœ¼ë©´ \"e\", ì‚­ì œí•˜ê³  ì‹¶ìœ¼ë©´ \"d\"í‚¤ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”!\n\n";
+			cout << "³»¿ëÀÌ ÀÖ½À´Ï´Ù! ¼öÁ¤ÇÏ°í ½ÍÀ¸¸é \"e\", »èÁ¦ÇÏ°í ½ÍÀ¸¸é \"d\"Å°¸¦ ´­·¯ÁÖ¼¼¿ä!\n\n";
 			cin >> input;
 			if (input == 'e') {
 				system("cls");
-				cout << "ë³€ê²½í•˜ê³  ì‹¶ì€ ë‚´ìš©ì„ ìž…ë ¥í•´ì£¼ì„¸ìš”.\n\n" << cN->letter <<"\n\n";
+				cout << "º¯°æÇÏ°í ½ÍÀº ³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.\n"
+					<< cN->letter
+					<< "\n\n"
+					<< "               ¡é¡é  \n";
 				cin >> cN->letter;
 			}
-			if (input == 'd') {
+			else if (input == 'd') {
 				system("cls");
-				cout << "ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.";
+				cout << "»èÁ¦µÇ¾ú½À´Ï´Ù.";
+				cN->light = 0;
 				Sleep(1000);
 				continue;
 			}
 		}
 		else {
 			system("cls");
-			printf("   - ëŸ¬ë¸Œë ˆí„° ìž‘ì„± - (í•œ ë¬¸ìž¥ìœ¼ë¡œ ì ì–´ì£¼ì„¸ìš”!)\n\n");
+			printf("   - ·¯ºê·¹ÅÍ ÀÛ¼º - (ÇÑ ¹®ÀåÀ¸·Î Àû¾îÁÖ¼¼¿ä!)\n\n");
 			cin >> cN->letter;
 			printf("%d", cN->data);
 			if (cN->light == 1) cN->light = 0;
 			else cN->light = 1;
 			Sleep(100);
 		}
-		
+
 	}
-	
+
 
 
 	return 0;
@@ -93,7 +97,7 @@ ChristmasTree* CreateTree(int line) {
 
 	return root;
 }
-ChristmasTree* Find(ChristmasTree* root,int keyNum){
+ChristmasTree* Find(ChristmasTree* root, int keyNum) {
 	int count = 1;
 	int right = 0;
 	int keyInLine = 0;
@@ -105,7 +109,7 @@ ChristmasTree* Find(ChristmasTree* root,int keyNum){
 			}
 		}
 	}
-	
+
 	ChristmasTree* rN = root;
 	for (int i = 0; i < right; i++) {
 		rN = rN->right;
@@ -119,18 +123,18 @@ void Print(int line, ChristmasTree* root) {
 
 	printf("\nChristmas Tree!\n");
 	if (line == 1) {
-		printf("  â˜†\n  1\n  |");
+		printf("  ¡Ù\n  1\n  |");
 		return;
 	}
 	for (int k = 0; k < (line - 1) * 2; k++) printf(" ");
-	printf("â˜†\n\n");
+	printf("¡Ù\n\n");
 	int cnt = 1;
 	int cnt2 = 1;
 	for (int i = 1; i <= line; i++) {
 		for (int j = 1; j <= i; j++) {
 			if (j == 1) for (int k = 0; k < (line - i) * 2; k++) printf(" ");
 			ChristmasTree* rN = Find(root, cnt2++);
-			rN->light == 1 ? printf("â—  ") : printf("â—‹  ");
+			rN->light == 1 ? printf("¡Ü   ") : printf("¡Û   ");
 		}
 		printf("\n");
 		for (int j = 1; j <= i; j++) {
@@ -149,6 +153,6 @@ void Print(int line, ChristmasTree* root) {
 		printf("|   |\n");
 	}
 	for (int k = 0; k < (line - 1) * 2 - 2; k++) printf(" ");
-	printf("_____\n");
+	printf("_____\n\n");
 }
 
