@@ -1,0 +1,3 @@
+﻿  소스.cpp
+C:\Users\user\Desktop\C-Practice\C_Algorithm_Project\C_Algorithm_Project\소스.cpp(13,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'ChristmasTree' 왼쪽은 무시됩니다.
+  C_Algorithm_Project.vcxproj -> C:\Users\user\Desktop\C-Practice\C_Algorithm_Project\x64\Debug\C_Algorithm_Project.exe
